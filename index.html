@@ -7,9 +7,6 @@
 
   <meta name="description" content="Portal do Beneficiário - 2ª via de fatura, reembolsos, carteirinha digital e suporte completo. Atendimento humanizado via WhatsApp.">
   <meta name="theme-color" content="#16a34a">
-  <meta property="og:title" content="Portal do Beneficiário">
-  <meta property="og:description" content="Gerencie seu plano de saúde com facilidade.">
-  <meta property="og:type" content="website">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,28 +18,16 @@
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             brandGreen: {
-              50:  '#ecfdf5',
-              100: '#d1fae5',
-              200: '#a7f3d0',
-              300: '#6ee7b7',
-              400: '#34d399',
+              50:  '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
               500: '#22c55e',
               600: '#16a34a',
               700: '#15803d',
               800: '#166534',
               900: '#14532d',
-            },
-            brandTeal: {
-              50:  '#ecfeff',
-              100: '#cffafe',
-              200: '#a5f3fc',
-              300: '#67e8f9',
-              400: '#22d3ee',
-              500: '#06b6d4',
-              600: '#0891b2',
-              700: '#0e7490',
-              800: '#155e75',
-              900: '#164e63',
             }
           },
           boxShadow: {
@@ -69,7 +54,6 @@
   </script>
 
   <style>
-    /* Anel “pulse” do botão flutuante */
     .wa-pulse::before{
       content:"";
       position:absolute;
@@ -82,306 +66,130 @@
   </style>
 </head>
 
-<body class="bg-brandGreen-50/50 text-slate-800 antialiased">
+<body class="bg-brandGreen-50 text-slate-800 antialiased">
 
-<header class="fixed w-full top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-brandGreen-100 shadow-sm transition-all">
+<header class="fixed w-full top-0 z-40 bg-white border-b border-brandGreen-100 shadow-sm">
   <div class="container mx-auto px-4 h-20 flex items-center justify-between">
 
-    <a href="#" class="flex items-center gap-3" aria-label="Voltar ao início">
-      <!-- LOGO: SOMENTE LETRA "A" -->
+    <a href="#" class="flex items-center gap-3">
       <div class="w-11 h-11 rounded-xl bg-brandGreen-600 text-white font-extrabold text-xl flex items-center justify-center shadow">
         A
       </div>
 
-      <span class="text-2xl font-extrabold text-brandGreen-900">
-        Portal<span class="text-brandTeal-600">Beneficiário</span>
+      <span class="text-2xl font-extrabold text-brandGreen-800">
+        Portal<span class="text-brandGreen-600">Beneficiário</span>
       </span>
     </a>
 
     <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
-      <a href="#servicos" class="hover:text-brandGreen-700 transition">Meus Serviços</a>
-      <a href="https://api.whatsapp.com/send?phone=551231972376" target="_blank" rel="noopener"
-         class="hover:text-brandGreen-700 transition flex items-center gap-1">
+      <a href="#servicos" class="hover:text-brandGreen-600 transition">Meus Serviços</a>
+      <a href="https://api.whatsapp.com/send?phone=551231972376" target="_blank" class="hover:text-brandGreen-600 transition">
         Financeiro
       </a>
-      <a href="#suporte" class="hover:text-brandGreen-700 transition">Suporte</a>
+      <a href="#suporte" class="hover:text-brandGreen-600 transition">Suporte</a>
     </nav>
 
-    <button id="menuBtn"
-            class="lg:hidden w-10 h-10 flex items-center justify-center rounded-md hover:bg-slate-100 transition"
-            aria-label="Abrir menu"
-            aria-expanded="false"
-            aria-controls="mobileMenu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-brandGreen-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-md hover:bg-slate-100 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-brandGreen-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-width="2" d="M4 8h16M4 16h16"/>
       </svg>
     </button>
   </div>
 
   <div id="mobileMenu" class="hidden lg:hidden px-4 pb-6 bg-white border-t border-gray-200 shadow-md">
-    <a href="#servicos" class="block py-3 text-slate-700 hover:text-brandGreen-700">Meus Serviços</a>
-    <a href="https://api.whatsapp.com/send?phone=551231972376" target="_blank" class="block py-3 text-slate-700 hover:text-brandGreen-700">Financeiro</a>
-    <a href="#suporte" class="block py-3 text-slate-700 hover:text-brandGreen-700">Suporte</a>
+    <a href="#servicos" class="block py-3 text-slate-700 hover:text-brandGreen-600">Meus Serviços</a>
+    <a href="https://api.whatsapp.com/send?phone=551231972376" target="_blank" class="block py-3 text-slate-700 hover:text-brandGreen-600">Financeiro</a>
+    <a href="#suporte" class="block py-3 text-slate-700 hover:text-brandGreen-600">Suporte</a>
   </div>
 </header>
 
 <script>
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
-
-  menuBtn.onclick = () => {
-    const isHidden = mobileMenu.classList.toggle("hidden");
-    menuBtn.setAttribute("aria-expanded", String(!isHidden));
-  };
+  menuBtn.onclick = () => mobileMenu.classList.toggle("hidden");
 </script>
 
-<section class="pt-36 pb-32 bg-gradient-to-br from-white via-brandGreen-50 to-white">
-  <div class="container mx-auto px-4 text-center">
-    <div class="max-w-4xl mx-auto space-y-8">
-
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brandGreen-200 shadow mb-4">
-        <span class="w-2 h-2 bg-brandTeal-500 rounded-full"></span>
-        <span class="text-xs font-semibold text-brandGreen-900 uppercase">Área Exclusiva Beneficiário</span>
-      </div>
-
-      <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight text-brandGreen-900">
-        Bem-vindo ao seu <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandGreen-600 to-brandTeal-600">
-          Novo Portal de Saúde
-        </span>
-      </h1>
-
-      <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-        Emissão de boletos, carteirinha virtual, reembolsos e suporte. <br>
-        Tudo o que você precisa em um ambiente rápido, seguro e intuitivo.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-        <a href="https://api.whatsapp.com/send?phone=551231972376"
-           target="_blank"
-           class="bg-brandGreen-600 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-brandGreen-700 hover:shadow-xl transition transform hover:-translate-y-1">
-          Acessar Serviços
-        </a>
-
-        <a href="#suporte"
-           class="bg-white border-2 border-brandGreen-100 text-brandGreen-900 px-10 py-4 rounded-full font-bold hover:border-brandGreen-500 hover:text-brandGreen-700 transition">
-          Preciso de Ajuda
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="servicos" class="relative z-20 -mt-16 mb-24">
+<section class="pt-36 pb-32 bg-gradient-to-br from-white via-brandGreen-50 to-white text-center">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <h1 class="text-5xl lg:text-6xl font-extrabold text-brandGreen-800 leading-tight">
+      Bem-vindo ao seu <br>
+      <span class="text-brandGreen-600">Portal de Saúde</span>
+    </h1>
 
-      <!-- Card 1 -->
-      <div class="bg-white rounded-xl shadow-soft p-8 flex items-center gap-5 border-t-4 border-brandGreen-600
-                  hover:-translate-y-1 hover:shadow-lg transition cursor-pointer group">
-        <div class="w-12 h-12 rounded-lg border border-brandGreen-100 bg-brandGreen-50
-                    flex items-center justify-center text-brandGreen-700 group-hover:bg-brandGreen-600
-                    group-hover:text-white transition">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 13h8M8 17h8M8 9h3"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-brandGreen-900">2ª Via de Fatura</h3>
-          <p class="text-sm text-slate-500 mt-1 leading-tight">Acesse seus boletos rapidamente.</p>
-        </div>
-      </div>
+    <p class="text-lg text-slate-600 max-w-2xl mx-auto mt-6">
+      Emissão de boletos, carteirinha virtual, reembolsos e suporte.
+      Tudo em um ambiente rápido e seguro.
+    </p>
 
-      <!-- Card 2 -->
-      <div class="bg-white rounded-xl shadow-soft p-8 flex items-center gap-5 border-t-4 border-brandTeal-600
-                  hover:-translate-y-1 hover:shadow-lg transition cursor-pointer group">
-        <div class="w-12 h-12 rounded-lg border border-brandGreen-100 bg-brandGreen-50
-                    flex items-center justify-center text-brandGreen-700 group-hover:bg-brandTeal-600
-                    group-hover:text-white transition">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 9h6"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 15h10"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16 10a2 2 0 1 1 0 4a2 2 0 0 1 0-4z"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-brandGreen-900">Carteirinha Virtual</h3>
-          <p class="text-sm text-slate-500 mt-1 leading-tight">Sua identificação digital.</p>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-xl shadow-soft p-8 flex items-center gap-5 border-t-4 border-brandGreen-600
-                  hover:-translate-y-1 hover:shadow-lg transition cursor-pointer group">
-        <div class="w-12 h-12 rounded-lg border border-brandGreen-100 bg-brandGreen-50
-                    flex items-center justify-center text-brandGreen-700 group-hover:bg-brandGreen-600
-                    group-hover:text-white transition">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M20 12V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 13l3 3l3-3"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-brandGreen-900">Solicitar Reembolso</h3>
-          <p class="text-sm text-slate-500 mt-1 leading-tight">Envie e acompanhe solicitações.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="suporte" class="py-24 bg-gradient-to-br from-brandGreen-600 via-brandGreen-700 to-brandTeal-700 relative overflow-hidden">
-  <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 -translate-y-1/2 translate-x-1/2"></div>
-  <div class="absolute bottom-0 left-0 w-80 h-80 bg-brandGreen-900 rounded-full blur-3xl opacity-25 translate-y-1/2 -translate-x-1/4"></div>
-
-  <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
-
-    <div class="w-full lg:w-1/2 text-white space-y-8">
-      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">
-        Ainda com dúvidas? <br>
-        <span class="text-brandTeal-100">Fale com nosso time.</span>
-      </h2>
-
-      <p class="text-white/90 text-lg max-w-md leading-relaxed">
-        Nossa equipe está pronta para te atender via WhatsApp com rapidez e qualidade.
-      </p>
-
-      <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl border border-white/15">
-        <div>
-          <p class="text-white font-semibold text-sm">Atendimento Humanizado</p>
-          <p class="text-white/80 text-xs">Segunda a Sexta, 08h às 22h</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full lg:w-1/2 max-w-md bg-white p-8 rounded-2xl shadow-xl text-center space-y-6">
-      <div class="w-16 h-16 bg-brandGreen-50 rounded-full flex items-center justify-center mx-auto text-2xl">
-        💬
-      </div>
-
-      <h3 class="text-xl font-bold text-slate-900">Canal de Atendimento</h3>
-      <p class="text-slate-500 text-sm">Clique abaixo para iniciar a conversa.</p>
-
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
       <a href="https://api.whatsapp.com/send?phone=551231972376"
          target="_blank"
-         rel="noopener"
-         class="block w-full bg-[#25D366] text-white px-6 py-3.5 rounded-lg font-bold shadow-md hover:bg-[#1ebe5f] hover:shadow-lg transition">
-        Iniciar WhatsApp
+         class="bg-brandGreen-600 text-white px-10 py-4 rounded-full font-bold shadow hover:bg-brandGreen-700 transition">
+        Acessar Serviços
       </a>
 
-      <p class="text-xs text-slate-500">
-        Ou ligue para <strong>+55 12 3197-2376</strong>
-      </p>
+      <a href="#suporte"
+         class="border-2 border-brandGreen-200 text-brandGreen-700 px-10 py-4 rounded-full font-bold hover:border-brandGreen-500 transition">
+        Preciso de Ajuda
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="py-20">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="bg-white p-8 rounded-xl shadow-soft border-t-4 border-brandGreen-600">
+      <h3 class="font-bold text-brandGreen-800 text-lg">2ª Via de Fatura</h3>
+      <p class="text-sm text-slate-500 mt-2">Acesse seus boletos rapidamente.</p>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-soft border-t-4 border-brandGreen-500">
+      <h3 class="font-bold text-brandGreen-800 text-lg">Carteirinha Virtual</h3>
+      <p class="text-sm text-slate-500 mt-2">Sua identificação digital.</p>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-soft border-t-4 border-brandGreen-600">
+      <h3 class="font-bold text-brandGreen-800 text-lg">Solicitar Reembolso</h3>
+      <p class="text-sm text-slate-500 mt-2">Envie e acompanhe solicitações.</p>
     </div>
 
   </div>
 </section>
 
-<footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
-  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
+<section id="suporte" class="py-24 bg-gradient-to-br from-brandGreen-600 via-brandGreen-700 to-brandGreen-800 text-white text-center">
+  <div class="container mx-auto px-4 max-w-2xl">
+    <h2 class="text-3xl font-extrabold">Fale com nosso time</h2>
+    <p class="mt-4 text-white/90">
+      Atendimento rápido via WhatsApp. Segunda a Sexta, das 08h às 22h.
+    </p>
 
-    <div class="col-span-1 md:col-span-2 space-y-4">
-      <span class="text-xl font-extrabold text-white">
-        Portal<span class="text-brandTeal-400">Beneficiário</span>
-      </span>
-
-      <p class="max-w-sm leading-relaxed text-sm">
-        Sua central de relacionamento. Gestão simples e transparente do seu plano de saúde.
-      </p>
-
-      <div class="text-slate-500 text-xs space-y-1 pt-4">
-        <p><strong>CNPJ:</strong> 23.591.482/0001-95</p>
-        <p>Central de Atendimento a Corretora de Seguros Ltda.</p>
-      </div>
-    </div>
-
-    <div class="space-y-3">
-      <h4 class="font-bold text-white">Navegação</h4>
-      <ul class="space-y-2">
-        <li><a href="#" class="hover:text-brandTeal-400 transition">Início</a></li>
-        <li><a href="#servicos" class="hover:text-brandTeal-400 transition">Serviços</a></li>
-        <li><a href="politica.html" class="hover:text-brandTeal-400 transition">Privacidade</a></li>
-      </ul>
-    </div>
-
-    <div class="space-y-3">
-      <h4 class="font-bold text-white">Contatos</h4>
-      <div class="space-y-2 text-slate-400">
-        <a href="tel:+551231972376" class="hover:text-white transition">+55 12 3197-2376</a>
-        <p>suporte@portaldocliente.com.br</p>
-      </div>
-    </div>
-
+    <a href="https://api.whatsapp.com/send?phone=551231972376"
+       target="_blank"
+       class="mt-8 inline-block bg-white text-brandGreen-700 px-8 py-4 rounded-lg font-bold shadow hover:bg-brandGreen-50 transition">
+      Iniciar Atendimento
+    </a>
   </div>
+</section>
 
-  <div class="container mx-auto px-4 mt-10 pt-6 border-t border-slate-800 text-center text-slate-500 text-xs">
-    &copy; 2025 — Todos os direitos reservados.
-  </div>
+<footer class="bg-brandGreen-900 text-green-200 py-12 text-center text-sm">
+  <p class="font-bold text-white text-lg">Portal Beneficiário</p>
+  <p class="mt-3">Central de Atendimento a Corretora de Seguros Ltda.</p>
+  <p class="mt-2 text-green-300 text-xs">CNPJ: 23.591.482/0001-95</p>
+  <p class="mt-6 text-green-400 text-xs">&copy; 2025 — Todos os direitos reservados.</p>
 </footer>
 
 <!-- BOTÃO FLUTUANTE WHATSAPP -->
-<a
-  href="https://api.whatsapp.com/send?phone=551231972376"
-  target="_blank"
-  rel="noopener"
-  aria-label="Falar no WhatsApp"
-  title="Falar no WhatsApp"
-  class="fixed bottom-5 right-5 z-50 wa-pulse"
->
-  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:shadow-xl transition hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brandGreen-200 animate-floaty">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7" fill="white" aria-hidden="true">
+<a href="https://api.whatsapp.com/send?phone=551231972376"
+   target="_blank"
+   class="fixed bottom-5 right-5 z-50 wa-pulse">
+
+  <span class="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:shadow-xl transition hover:-translate-y-1 animate-floaty">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7" fill="white">
       <path d="M19.11 17.21c-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.11-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.49.07-.75.35-.26.28-.98.96-.98 2.35 0 1.38 1 2.72 1.14 2.91.14.19 1.97 3 4.77 4.2.67.29 1.2.46 1.61.59.68.22 1.3.19 1.79.12.55-.08 1.66-.68 1.9-1.33.23-.65.23-1.21.16-1.33-.07-.12-.26-.19-.54-.33z"/>
-      <path d="M26.66 5.34A14.84 14.84 0 0 0 16.02 1C7.82 1 1.14 7.67 1.14 15.87c0 2.62.68 5.18 1.98 7.44L1 31l7.87-2.07a14.8 14.8 0 0 0 7.15 1.82h.01c8.2 0 14.87-6.67 14.87-14.87 0-3.97-1.55-7.7-4.24-10.54zM16.03 28.28h-.01a12.3 12.3 0 0 1-6.27-1.72l-.45-.27-4.67 1.23 1.25-4.55-.29-.47a12.3 12.3 0 0 1-1.9-6.63C3.69 8.97 9.12 3.54 16.02 3.54c3.29 0 6.38 1.28 8.7 3.6a12.22 12.22 0 0 1 3.6 8.72c0 6.9-5.43 12.42-12.29 12.42z"/>
     </svg>
   </span>
 </a>
-
-<div id="cookie-banner"
-     class="fixed bottom-4 left-4 right-4 md:right-4 md:max-w-md bg-white shadow-lg border border-gray-200 p-5 rounded-xl z-50 flex flex-col gap-4 hidden">
-
-  <div class="flex items-start gap-3">
-    <span class="text-2xl">🍪</span>
-    <div>
-      <h4 class="font-bold text-slate-900 text-sm">Cookies e Privacidade</h4>
-      <p class="text-xs text-slate-500 mt-1">
-        Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa política.
-      </p>
-    </div>
-  </div>
-
-  <div class="flex gap-2 justify-end">
-    <button id="cookie-close" class="text-xs font-medium text-slate-500 px-4 py-2 hover:bg-gray-50 rounded-lg">
-      Fechar
-    </button>
-
-    <button id="cookie-accept" class="text-xs font-bold text-white bg-brandGreen-600 px-5 py-2 rounded-lg hover:bg-brandGreen-700">
-      Concordar
-    </button>
-  </div>
-</div>
-
-<script>
-  const banner = document.getElementById("cookie-banner");
-
-  if (!localStorage.getItem("cookiesAccepted")) {
-    banner.classList.remove("hidden");
-  }
-
-  document.getElementById("cookie-accept").onclick = () => {
-    localStorage.setItem("cookiesAccepted", "true");
-    banner.classList.add("hidden");
-  };
-
-  document.getElementById("cookie-close").onclick = () => {
-    banner.classList.add("hidden");
-  };
-</script>
 
 </body>
 </html>
